@@ -21,9 +21,19 @@
           <table id="table" style="min-width: 680px; margin: 2rem">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Read</th>
+                <th>Title
+                    <label for="Title"></label>
+                    <input id = title type="text"/>
+                </th>
+                <th>Author
+                  <label for="Author"></label>
+                  <input id = author type="text"/>
+                </th>
+                <th>Read
+                  <label for="Title"></label>
+                  <input id = read type="checkbox"/>
+                </th>
+                <button id="button">Add Book</button>
               </tr>
             </thead>
             <tbody>
@@ -31,6 +41,7 @@
                 <td>Name of the Wind</td>
                 <td>Patrick Rothfuss</td>
                 <td>
+                  
                   <input
                     type="checkbox"
                     name="read"
@@ -38,7 +49,8 @@
                     checked
                     disabled
                   />
-                </td>
+                <!-- Attributes tied to checkbox type. -->
+              </td>
               </tr>
             </tbody>
           </table>

@@ -27,19 +27,42 @@
 2. Create a class `Library` that has the following properties and methods:
    - Book count (number)
    - Books (array of books)
-   - `markRead` method that will:
+
+
+
+
+
+
+
+
+  - `markRead` method that will:
      - Take in a parameter `checkbox` and `id`
      - Loop through the library books
      - If the book id is the same as the param id, change the book read property to true, the `checkbox` checked attribute to true, and the `checked` disabled attribute to true
+
+
+
+
+
+
+
+
+
+
+     
    - `addBook` method that will:
      - Select the title input value, author input value, and read checkbox value
      - Use the book constructor to create a new book, passing in the input value, author value, and read checkbox value as params
      - Create a new table row
+
+
      - Create new table cells `title`, `author` and `read` properties of the newly added book
      - Append the new table cells to the newly created row
      - Select the table body
      - Append the new row to the table body
      - Increment library `bookCount` by one
+
+
 3. Select the `Add Book` button from your index.html
 4. Add an event listener to the button element that listens for a `click` event, and calls the library `addBook`
 
