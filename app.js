@@ -22,24 +22,43 @@ class Library {
     this.count = 0;
     this.books = [];
   }
+
   //Can omit function word in classes.
+  // markRead(id) {
+  //   //Query select for all the inputs that have a type attribute equal to "checkbox"
+  //   const allCheckboxInputs = document.querySelectorAll(
+  //     "input[type = checkbox]"
+  //   );
+  //   //Select the checkbox that corresponds with the given id.
+  //   let checkbox = allCheckboxInputs[id + 1];
+
+  //   //Books works because this is still in the Library class.
+  //       for (let i = 0; i < this.books.length; i++) {
+
+  //if (id == this.books[i].id) {
+  //this.books[i].read = true;
+  //checkbox.checked = false;
+  //Checkbox disabled = unclickable.
+  //checkbox.disabled = true;
+  //     }
+  //   }
+  // }
+
   markRead(id) {
-    //Query select for all the inputs that have a type attribute equal to "checkbox"
-    const allCheckboxInputs = document.querySelectorAll("input[type = checkbox]");
-    //Select the checkbox that corresponds with the given id.
-    let checkbox = allCheckboxInputs[id + 1];
-
-    //Books works because this is still in the Library class.
+    console.log("inside");
     for (let i = 0; i < this.books.length; i++) {
-
+      console.log(id, this.books[i].id)
       if (id == this.books[i].id) {
         this.books[i].read = true;
-        checkbox.checked = false;
-        //Checkbox disabled = unclickable.
-        checkbox.disabled = true;
+        let cb = document.getElementById(id);
+        console.log(cb);
+        document.getElementById(id).checked = true;
+        document.getElementById(id).disabled = true;
       }
     }
   }
+  
+
 
   addBook = function () {
     //Links to HTML element locations.
@@ -62,7 +81,7 @@ class Library {
     //Insert a new row at the selected element.
     let newRow = tableSpot.insertRow();
 
-    //Create 3 new cells in the newwly made row.
+    //Create 3 new cells in the newly made row.
     let cell1 = newRow.insertCell();
     let cell2 = newRow.insertCell();
     let cell3 = newRow.insertCell();
@@ -70,8 +89,37 @@ class Library {
     //Set the cells to the new book's inputted values.
     cell1.textContent = title1.value;
     cell2.textContent = author1.value;
-    cell3.textContent = read1.checked;
 
+    //Was unnecessarily adding text.
+    // cell3.textContent = read1.checked;
+
+   
+
+    let checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.id = this.count;
+
+    if (read1.checked == true) {
+      checkBox.checked = true;
+      checkBox.disabled = true;
+    } else {
+      checkBox.checked = false;
+      checkBox.disabled = false;
+    }
+    let test = this.count;
+
+  //   checkBox.addEventListener("click", (test) => {
+  //     console.log("test", test);
+  //   testLibrary.markRead(test)
+  // })
+
+  checkBox.addEventListener("click", () => {
+    testLibrary.markRead(test)
+})
+
+    cell3.appendChild(checkBox);
+    console.log(this.books);
+    
     this.count++;
   };
 }
@@ -79,13 +127,18 @@ class Library {
 //Created new Library object. Classes are object blueprints.
 const testLibrary = new Library();
 
-console.log(testLibrary);
-
 //Since new object was made, can call the add method.
-testLibrary.addBook();
+// testLibrary.addBook();
+
+//console.log(testLibrary.markRead());
 
 //Select button element, add listener to make it function.
 let button = document.getElementById("button");
 button.addEventListener("click", () => testLibrary.addBook());
 
+// testLibrary.markRead();
+// console.log(testLibrary.markRead());
 
+// function readHelper(num) {
+//   return testLibrary.markRead(num);
+// };
